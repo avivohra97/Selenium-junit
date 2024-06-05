@@ -23,6 +23,20 @@ public class BasicActionsTest {
     public void name() {
         driver.get(baseURL);
         driver.findElement(By.xpath("//a[@href='/sign_in']")).click();
+        driver.navigate().back();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        if(driver.getTitle().equals("Home | Let's Kode It"))
+            driver.navigate().forward();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println(driver.getTitle());
         driver.findElement(By.xpath("//input[@id='email']")).clear();
         driver.findElement(By.xpath("//input[@id='email']")).sendKeys("test@email.com");
         driver.findElement(By.xpath("//input[@id='password']")).sendKeys("test");
