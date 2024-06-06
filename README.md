@@ -23,3 +23,25 @@ int date1 = (int)(Math.random()*wb.size())+1;
 wb.get(date1).click();
 wb.get(date1+1).click();
 ```
+
+Alternate to auto suggest:
+```
+String inHtml = <webelement>.getAttribute("innerHtml");
+list <webelements> wb = webelement.findelements(xpath)
+
+```
+
+Screenshots
+
+```
+public static void takeSnapShot(WebDriver webdriver,String fileWithPath) throws Exception{
+//Convert web driver object to TakeScreenshot
+TakesScreenshot scrShot =((TakesScreenshot)webdriver);
+//Call getScreenshotAs method to create image file
+File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
+//Move image file to new destination
+File DestFile=new File(fileWithPath);
+//Copy file at destination
+FileUtils.copyFile(SrcFile, DestFile);
+} 
+```
